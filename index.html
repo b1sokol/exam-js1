@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Міні-музична платформа</title>
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body>
+    <div class="basic">
+        <div class="container">
+            <h1>Міні-музична платформа</h1>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Введіть побажання...">
+                <button id="search-btn">Пошук</button>
+            </div>
+            <div class="music-player">
+                <!-- Ваш код музичного плеєра -->
+            </div>
+            <div id="search-results"></div>
+        </div>
+        <div class="music-player">
+            <audio id="audio-player"></audio>
+            <div class="controls">
+                <button id="play-btn">&#9658;</button>
+                <button id="pause-btn">&#10074;&#10074;</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="track-info">
+                <p id="track-name"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>
