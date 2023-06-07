@@ -4,7 +4,7 @@ const settings = {
 	url: 'https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem',
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'SIGN-UP-FOR-KEY',
+		'X-RapidAPI-Key': '3dfc605c27msh16d423cc3b3bea8p1124bajsnbc2ee27ede42',
 		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
 	}
 };
@@ -138,6 +138,25 @@ if (!favoriteTracks) {
 } else {
   // Якщо дані про улюблені треки є, розпарсюємо їх з JSON у масив
   favoriteTracks = JSON.parse(favoriteTracks);
+}
+
+async function getData (q) {
+  const url = `https://deezerdevs-deezer.p.rapidapi.com/search?q=${q}`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '3dfc605c27msh16d423cc3b3bea8p1124bajsnbc2ee27ede42',
+      'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+    }
+  };
+  
+  try {
+    const response = await fetch(url, options);
+    const result = await response.json();
+    console.log(result, "результат запиту");
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // Функція для виконання пошукового запиту
