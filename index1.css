@@ -1,22 +1,67 @@
-body{
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
     background-image: url(./image/nlywxxnikby2quiuxhnq4pat2nelbifz.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
   background-size: cover;
-
-}
-
-.container {
+  }
+  
+  h1, h2 {
     text-align: center;
-    margin-top: 50px;
   }
   
-  h1 {
-    font-size: 24px;
+  #search-container {
     margin-bottom: 20px;
-    color: rgb(255, 255, 255);
   }
   
+  #search-input {
+    padding: 5px;
+    font-size: 16px;
+    width: 300px;
+  }
+  
+  #search-btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .card {
+    display: inline-block;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  .card img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .favorite-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .remove-favorite {
+    background-color: #ff6666;
+    color: #fff;
+    border: none;
+  }
+  
+  .add-favorite {
+    background-color: #66cc66;
+    color: #fff;
+    border: none;
+  }
   .music-player {
     width: 300px;
     background-color: #1d145c;
