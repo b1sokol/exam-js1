@@ -16,10 +16,10 @@ const audioPlayer = document.getElementById('audio-player');
 const playBtn = document.getElementById('play-btn');
 const pauseBtn = document.getElementById('pause-btn');
 const progress = document.querySelector('.progress');
-const trackName = document.getElementById('track-name');
-searchBtn.addEventListener('click', searchTracks);
+const trackName = document.getElementById ('track-name');
 const searchInput = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-btn');
+searchBtn.addEventListener('click', searchTracks);
 const searchResults = document.getElementById('search-results');
 
 // Задаємо URL-адресу музичного файлу
@@ -30,7 +30,8 @@ audioPlayer.src = trackUrl;
 
 // Функція для відтворення музики
 function playMusic() {
-  audioPlayer.play();
+  audioPlayer.
+  pause();
 }
 
 // Функція для паузи музики
@@ -77,33 +78,13 @@ function searchTracks() {
 // Обробник події для кнопки пошуку
 
 
-// Функція для виконання пошукового запиту
-function searchTracks() {
-  const searchQuery = searchInput.value;
-
   // Виконайте пошуковий запит до зовнішнього джерела даних або бази даних тут
 
-  // Отримайте результати пошуку та відобразіть їх у вигляді карток
-  const searchResultData = [
-    { 
-      title: 'Трек 1', 
-      image: 'track1.jpg', 
-      artist: 'Артист 1' 
-    },
-    { 
-      title: 'Трек 2', 
-      image: 'track2.jpg', 
-      artist: 'Артист 2' 
-    },
-    { 
-      title: 'Трек 3', 
-      image: 'track3.jpg', 
-      artist: 'Артист 3' 
-    },
+
     // Додайте результати пошуку залежно від отриманих даних
-  ];
 
   // Очистіть контейнер результатів пошуку
+  
   searchResults.innerHTML = '';
 
   // Створіть картку для кожного результату пошуку
@@ -125,7 +106,6 @@ function searchTracks() {
 
     searchResults.appendChild(card);
   });
-}
 
 // Обробник події для кнопки пошуку
 searchBtn.addEventListener('click', searchTracks);
@@ -160,8 +140,29 @@ async function getData (q) {
 }
 
 // Функція для виконання пошукового запиту
-function searchTracks() {
+async function searchTracks() {
   const searchQuery = searchInput.value;
+
+  try {
+    const response = await fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${searchQuery}`, {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Key': '3dfc605c27msh16d423cc3b3bea8p1124bajsnbc2ee27ede42',
+        'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Request failed.');
+    }
+
+    const data = await response.json();
+    displaySearchResults(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
   // Виконайте пошуковий запит до зовнішнього джерела даних або бази даних тут
 
@@ -179,8 +180,19 @@ function searchTracks() {
       title: 'Трек 3', 
       artist: 'Артист 3' 
     },
-    // Додайте результати пошуку залежно від отриманих даних
   ];
+
+   // Додайте результати пошуку залежно від отриманих даних
+
+  function displaySearchResults(data) {
+    const searchResultHTML = `
+      <p>Результати пошуку для "${searchQuery}":</p>
+      <ul>
+        ${data.data.map((result) => `<li>${result.title}</li>`).join('')}
+      </ul>`;
+    searchResults.innerHTML = searchResultHTML;
+  }
+  
 
   // Очистіть контейнер результатів пошуку
   searchResults.innerHTML = '';
@@ -210,7 +222,6 @@ function searchTracks() {
 
     searchResults.appendChild(card);
   });
-}
 
 // Обробник подій для кнопки пошуку
 searchBtn.addEventListener('click', searchTracks);
